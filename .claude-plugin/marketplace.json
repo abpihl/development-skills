@@ -1,0 +1,23 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "development-skills",
+  "description": "General development skills for Claude Code — visualization, diagramming, and cross-project utilities.",
+  "owner": {
+    "name": "Allan Buus Pihl",
+    "email": "api@delegate.dk"
+  },
+  "plugins": [
+    {
+      "name": "dev",
+      "description": "Developer utility skills: /dev:excalidraw (Excalidraw authoring rules), /dev:diagram (use case and architecture visualization).",
+      "version": "1.0.0",
+      "author": {
+        "name": "Allan Buus Pihl",
+        "email": "api@delegate.dk"
+      },
+      "source": "./plugins/dev",
+      "category": "development",
+      "strict": false
+    }
+  ]
+}
