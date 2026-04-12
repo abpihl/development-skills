@@ -16,6 +16,18 @@ Always delegate editing to a subagent.
 
 ---
 
+## Output Directory
+
+Always save `.excalidraw` files to:
+
+```
+C:\Users\api\OneDrive - Delegate A S\Pictures\Excalidraw outputs
+```
+
+Use this path whenever a location is needed and the user has not specified a different one.
+
+---
+
 ## Creating a New Diagram
 
 Generate the JSON directly. No subagent needed for creation.
