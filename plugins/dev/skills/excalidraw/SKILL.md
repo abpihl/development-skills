@@ -163,6 +163,25 @@ Specify changes ───────────→  Apply changes to JSON
 
 ---
 
+## Brand (optional)
+
+If `../brand/SKILL.md` exists, load it and resolve the active profile before generating elements. Apply the profile's colours, stroke styles, and element presets to all generated elements.
+
+If no brand skill is present or no profile is specified, use these defaults:
+
+| Property | Default |
+|---|---|
+| `strokeColor` | `#1e1e1e` |
+| `backgroundColor` | `transparent` |
+| `strokeWidth` | 2 |
+| `roughness` | 1 |
+| `fillStyle` | `solid` |
+| `fontFamily` | 1 (Virgil/Hand) |
+| `roundness` | `null` |
+| `viewBackgroundColor` | `#ffffff` |
+
+---
+
 ## Common Pitfalls
 
 | Pitfall | Fix |

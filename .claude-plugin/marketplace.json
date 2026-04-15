@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "dev",
-      "description": "Developer utility skills: /dev:excalidraw (Excalidraw authoring rules), /dev:diagram (use case and architecture visualization).",
+      "description": "Developer utility skills: /dev:brand (brand identity profiles), /dev:excalidraw (Excalidraw authoring rules), /dev:diagram (use case and architecture visualization).",
       "version": "1.0.0",
       "author": {
         "name": "Allan Buus Pihl",

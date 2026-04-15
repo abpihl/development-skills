@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/api/.claude/plugins/cache/development-skills/dev/1.0.0/skills/excalidraw/**)",
+      "mcp__excalidraw__get_output_directory",
+      "Read(//c/Users/api/.claude/**)",
+      "Read(//c/Users/api/**)",
+      "Bash(npm run:*)",
+      "Bash(node C:/tmp/gen-excalidraw.mjs)",
+      "Bash(python3 -c ' *)",
+      "Bash(powershell.exe -Command \"Copy-Item -Path 'C:\\\\tmp\\\\ai-cognitive-overload-context-and.excalidraw' -Destination 'C:\\\\Users\\\\api\\\\OneDrive - Delegate A S\\\\Pictures\\\\Excalidraw outputs\\\\ai-cognitive-overload-context-and.excalidraw' -Force\")",
+      "Bash(python3 \"C:/Users/api/AppData/Local/Temp/write_excalidraw.py\")",
+      "Bash(python3 -c \"import os; print\\(os.path.exists\\('C:/Users/api/OneDrive - Delegate A S/Pictures/Excalidraw outputs/'\\)\\)\")",
+      "Bash(powershell.exe -Command \"Set-Content -Path 'C:\\\\Users\\\\api\\\\OneDrive - Delegate A S\\\\Pictures\\\\Excalidraw outputs\\\\test.txt' -Value 'hello' -Encoding UTF8; Write-Host 'success'\")",
+      "Bash(powershell.exe -Command \"Remove-Item 'C:\\\\Users\\\\api\\\\OneDrive - Delegate A S\\\\Pictures\\\\Excalidraw outputs\\\\test.txt' -ErrorAction SilentlyContinue\")"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\api\\OneDrive - Delegate A S\\Delegate\\06. Claude Code - Anthropic\\excalidraw-mcp\\src",
+      "C:\\Users\\api\\.claude\\plugins\\cache\\development-skills\\dev\\1.0.0\\skills\\excalidraw",
+      "C:\\Users\\api\\OneDrive - Delegate A S\\Privat\\Dev-Personal\\communication-skills\\plugins\\li\\skills\\infographic",
+      "C:\\Users\\api\\.claude\\plugins\\cache\\communication\\li\\1.0.0\\skills\\infographic",
+      "C:\\Users\\api\\.claude\\plugins\\marketplaces\\communication\\plugins\\li\\skills\\infographic",
+      "C:\\Users\\api\\OneDrive - Delegate A S\\Pictures\\Excalidraw outputs",
+      "C:\\tmp",
+      "C:\\Users\\api\\AppData\\Local\\Temp"
+    ]
+  }
+}

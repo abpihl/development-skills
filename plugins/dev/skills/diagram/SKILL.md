@@ -30,6 +30,17 @@ If none of the above: ask:
 
 ---
 
+## Brand (optional)
+
+If `../brand/SKILL.md` exists, load it and resolve the active profile. Apply the profile's colours, typography, and element presets when generating diagram elements. The profile can be set via:
+
+1. **Explicit flag** — `/dev:diagram --brand context-and`
+2. **Conversation context** — user said "use the Context& brand"
+3. **Default profile** — the profile with `default: true` in its frontmatter
+4. **No profile** — use the built-in defaults from `../excalidraw/SKILL.md`
+
+---
+
 ## Step 0: Confirm scope
 
 State what you are about to diagram and where the file will be saved. Keep it brief.
@@ -137,7 +148,7 @@ If called from a larger workflow (e.g., `/usecase`), continue to the next step i
 
 ## Rules
 
-1. Load `../excalidraw/SKILL.md` before writing any Excalidraw JSON — no exceptions.
+1. Load `../excalidraw/SKILL.md` before writing any Excalidraw JSON — no exceptions. Load `../brand/SKILL.md` if it exists and resolve the active profile.
 2. Usecase mode: skip the confirmation gate if the use case is already confirmed. Generate immediately.
 3. Manifest / free-text mode: always confirm scope before generating.
 4. Never read `.excalidraw` files directly — delegate all edits to a subagent.
