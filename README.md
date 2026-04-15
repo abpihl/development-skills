@@ -83,6 +83,20 @@ Brand profiles are designed to be consumed across plugins:
 
 The integration is always optional — skills fall back to built-in defaults when no brand profile is available.
 
+### Excalidraw style guidance
+
+For diagrams that look hand-drawn and human (the whole point of Excalidraw):
+
+| Property | Value | Why |
+|---|---|---|
+| `roughness` | `1` | Hand-drawn edges — `0` looks like PowerPoint |
+| `fontFamily` | `1` (Virgil) | The signature Excalidraw hand-drawn font — `2` (Helvetica) kills the feel |
+| `fillStyle` | `"solid"` | Clean fills with light colours — `"hachure"` is too noisy for most diagrams |
+| `roundness` | `{ "type": 3 }` | Rounded corners on all rectangles |
+| `strokeWidth` | `2` | Standard weight for shapes |
+
+Containers (grouping boxes) should use a subtle solid background fill with a dashed or solid border — see the `Container / group` node preset in each brand profile.
+
 ---
 
 ## Diagram Generation
