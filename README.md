@@ -1,6 +1,6 @@
 # development-skills — Claude Code plugins
 
-General-purpose development skills for Claude Code — visualization, diagramming, and cross-project utilities.
+Brand identity management, Excalidraw authoring, and diagram generation for Claude Code.
 
 ---
 
@@ -14,26 +14,48 @@ General-purpose development skills for Claude Code — visualization, diagrammin
 
 ## dev
 
-Brand profiles, Excalidraw authoring, and diagram generation for Claude Code projects.
-
 ### Skills
 
 | Skill | Command | Description |
 |---|---|---|
-| Brand | `/dev:brand` | Named brand identity profiles (colours, typography, diagram styles, document templates). Loaded by `excalidraw` and `diagram` to apply consistent visual identity. |
-| Excalidraw | `/dev:excalidraw` | Authoring rules for working with `.excalidraw` files — element types, required fields, ID rules, arrow binding, and the subagent delegation pattern for editing. Reference skill loaded by `/dev:diagram`. |
-| Diagram | `/dev:diagram` | Generates an Excalidraw `.excalidraw` file from a confirmed use case, build manifest, or free-text description. Works standalone or as a step in the `/usecase` or `/mcs:architect` workflows. |
+| Brand | `/dev:brand` | Named brand identity profiles — colours, typography, diagram styles, document templates. Single source of truth consumed by `excalidraw`, `diagram`, and cross-plugin skills like `/li:infographic`. |
+| Excalidraw | `/dev:excalidraw` | Authoring rules for `.excalidraw` files — element types, required fields, ID rules, arrow binding, subagent delegation pattern. Optionally loads a brand profile for styling. |
+| Diagram | `/dev:diagram` | Generates Excalidraw diagrams from use cases, build manifests, or free-text. Optionally loads a brand profile for styling. |
 
-### Brand profiles
+---
 
-The brand skill provides named profiles that `excalidraw` and `diagram` consume automatically. Each profile defines colours, typography, diagram element styles, and document template references.
+## Brand Profiles
 
-| Profile | Default | Description |
+The brand skill provides named profiles that any output-producing skill can consume. Each profile defines colours, typography, diagram element styles, layout templates, and document template references.
+
+### Available profiles
+
+| Profile | Default | Palette | Description |
+|---|---|---|---|
+| `context-and` | Yes | Black / White / Purple `#5500FF` | Context& visual identity — Aktiv Grotesk + PP Neue Machina typography, clean diagram style, logo/photography/icon guidelines |
+| `personal` | No | Forest green `#1b4332` / `#52b788` | Personal brand — weight-based 6-level typography hierarchy, 8px grid system, 8 infographic layout templates, WCAG contrast ratios |
+
+### Profile contents
+
+Each profile can define:
+
+| Section | Required | Description |
 |---|---|---|
-| `context-and` | Yes | Context& visual identity — black/white/purple palette, Aktiv Grotesk + PP Neue Machina typography, clean diagram style |
-| `personal` | No | Personal brand — forest green palette, weight-based typography hierarchy, 8px grid system, 8 layout templates for infographics |
+| Colours | Yes | Primary + secondary palette, semantic role mapping (stroke, fill, accent, background, success, warning, info) |
+| Typography | Yes | Font families, weights, sizes, line heights, letter spacing |
+| Diagram Styles | Yes | Excalidraw element defaults, node presets by type, arrow defaults, canvas settings |
+| Document Templates | Yes | Word/PowerPoint/Excel style mappings, template file references |
+| Grid System | Optional | Canvas dimensions, padding, spacing rules (used by infographic/fixed-canvas skills) |
+| Layout Templates | Optional | Named structural templates with element positions (e.g. KPI Cards, Timeline, Bold Statement) |
+| UX & Readability Rules | Optional | Gestalt principles, contrast rules, text density limits |
 
-To create a new profile, copy `profiles/_template.md` and fill in the values.
+### Creating a new profile
+
+Copy `plugins/dev/skills/brand/profiles/_template.md` and fill in the values:
+
+```
+plugins/dev/skills/brand/profiles/customer-x.md
+```
 
 ### Using brand with diagrams
 
@@ -48,6 +70,22 @@ To create a new profile, copy `profiles/_template.md` and fill in the values.
 # Without brand — uses built-in defaults
 /dev:diagram <description>
 ```
+
+### Cross-plugin integration
+
+Brand profiles are designed to be consumed across plugins:
+
+| Plugin | Skill | How it uses brand |
+|---|---|---|
+| `dev` | `/dev:diagram` | Applies colours, node presets, arrow styles to generated Excalidraw files |
+| `dev` | `/dev:excalidraw` | Applies element defaults when creating or editing `.excalidraw` files |
+| `communication` | `/li:infographic` | References `personal` profile for colour palette, typography, grid, layout templates, and UX rules |
+
+The integration is always optional — skills fall back to built-in defaults when no brand profile is available.
+
+---
+
+## Diagram Generation
 
 ### Input modes
 
@@ -85,6 +123,30 @@ To create a new profile, copy `profiles/_template.md` and fill in the values.
 | usecase | `docs/diagrams/<use-case-name>.excalidraw` |
 | manifest | `<project-dir>/<agent-name>-architecture.excalidraw` |
 | free-text | Current working directory |
+
+---
+
+## Project Structure
+
+```
+development-skills/
+├── .claude-plugin/marketplace.json
+├── plugins/
+│   └── dev/
+│       ├── .claude-plugin/plugin.json
+│       └── skills/
+│           ├── brand/
+│           │   ├── SKILL.md                  ← skill definition + profile resolution
+│           │   └── profiles/
+│           │       ├── context-and.md        ← Context& identity (default)
+│           │       ├── personal.md           ← Personal brand + layout templates
+│           │       └── _template.md          ← Blank template for new profiles
+│           ├── diagram/
+│           │   └── SKILL.md                  ← diagram generation skill
+│           └── excalidraw/
+│               └── SKILL.md                  ← Excalidraw authoring rules
+└── README.md
+```
 
 ---
 
