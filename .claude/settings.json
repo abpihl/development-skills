@@ -13,7 +13,8 @@
       "Bash(python3 -c \"import os; print\\(os.path.exists\\('C:/Users/api/OneDrive - Delegate A S/Pictures/Excalidraw outputs/'\\)\\)\")",
       "Bash(powershell.exe -Command \"Set-Content -Path 'C:\\\\Users\\\\api\\\\OneDrive - Delegate A S\\\\Pictures\\\\Excalidraw outputs\\\\test.txt' -Value 'hello' -Encoding UTF8; Write-Host 'success'\")",
       "Bash(powershell.exe -Command \"Remove-Item 'C:\\\\Users\\\\api\\\\OneDrive - Delegate A S\\\\Pictures\\\\Excalidraw outputs\\\\test.txt' -ErrorAction SilentlyContinue\")",
-      "Bash(cmd.exe /c copy /Y \"C:\\\\tmp\\\\ai-cognitive-overload-personal.excalidraw\" \"C:\\\\Users\\\\api\\\\OneDrive - Delegate A S\\\\Pictures\\\\Excalidraw outputs\\\\ai-cognitive-overload-personal.excalidraw\")"
+      "Bash(cmd.exe /c copy /Y \"C:\\\\tmp\\\\ai-cognitive-overload-personal.excalidraw\" \"C:\\\\Users\\\\api\\\\OneDrive - Delegate A S\\\\Pictures\\\\Excalidraw outputs\\\\ai-cognitive-overload-personal.excalidraw\")",
+      "Bash(powershell.exe -Command \"Copy-Item -Path 'C:\\\\tmp\\\\ai-cognitive-overload-personal.excalidraw' -Destination 'C:\\\\Users\\\\api\\\\OneDrive - Delegate A S\\\\Pictures\\\\Excalidraw outputs\\\\ai-cognitive-overload-personal.excalidraw' -Force\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\api\\OneDrive - Delegate A S\\Delegate\\06. Claude Code - Anthropic\\excalidraw-mcp\\src",
