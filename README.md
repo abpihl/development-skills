@@ -1,6 +1,6 @@
 # development-skills — Claude Code plugins
 
-Brand identity management, Excalidraw authoring, and diagram generation for Claude Code.
+Brand identity management, Excalidraw authoring, diagram generation, and decision visuals for Claude Code.
 
 ---
 
@@ -8,7 +8,7 @@ Brand identity management, Excalidraw authoring, and diagram generation for Clau
 
 | Plugin | Install command | Description |
 |---|---|---|
-| `dev` | `/plugin install dev@development-skills` | Brand profiles, Excalidraw authoring rules, and diagram generation |
+| `dev` | `/plugin install dev@development-skills` | Brand profiles, Excalidraw authoring rules, diagram generation, and decision visuals |
 
 ---
 
@@ -21,6 +21,7 @@ Brand identity management, Excalidraw authoring, and diagram generation for Clau
 | Brand | `/dev:brand` | Named brand identity profiles — colours, typography, diagram styles, document templates. Single source of truth consumed by `excalidraw`, `diagram`, and cross-plugin skills like `/li:infographic`. |
 | Excalidraw | `/dev:excalidraw` | Authoring rules for `.excalidraw` files — element types, required fields, ID rules, arrow binding, subagent delegation pattern. Optionally loads a brand profile for styling. |
 | Diagram | `/dev:diagram` | Generates Excalidraw diagrams from use cases, build manifests, or free-text. Optionally loads a brand profile for styling. |
+| Decision visual | `/dev:decision-visual` | After a long reply, renders a simple inline HTML visual: status pills, what you need to know, and the decisions to take, with answer buttons. Runs unasked; see [Decision visual](#decision-visual). |
 
 ---
 
@@ -140,6 +141,29 @@ Containers (grouping boxes) should use a subtle solid background fill with a das
 
 ---
 
+## Decision visual
+
+After any long reply (about 250+ words, a report of finished work, or one that leaves you something to decide), Claude renders one scratch visual inline with `show_widget`:
+
+| Section | Shows |
+|---|---|
+| Status pills | Up to 4 facts: done or verified (green), not done or not verified (amber) |
+| What you need to know | Two cards: what is true now, and what is still open or a limit |
+| Mini picture | Optional, only when a shape explains it faster than words |
+| Decisions for you | One card per decision, with context, a recommendation, and answer buttons (`sendPrompt`) |
+
+It needs the visualize tools (`mcp__visualize__read_me`, `mcp__visualize__show_widget`), which the Claude desktop app provides. Elsewhere it falls back to a short **Know** / **Decide** markdown block.
+
+A skill runs only when Claude judges it relevant. To have it run after every long reply, add this to your `~/.claude/CLAUDE.md`:
+
+```markdown
+## Decision visual after long replies
+
+After any long reply (about 250+ words, a report of finished work, or one that leaves you something to decide), follow the `dev:decision-visual` skill: render a simple scratch HTML visual inline of what you need to know and the decisions to take, with answer buttons.
+```
+
+---
+
 ## Project Structure
 
 ```
@@ -155,6 +179,8 @@ development-skills/
 │           │       ├── context-and.md        ← Context& identity (default)
 │           │       ├── personal.md           ← Personal brand + layout templates
 │           │       └── _template.md          ← Blank template for new profiles
+│           ├── decision-visual/
+│           │   └── SKILL.md                  ← know/decide visual after long replies
 │           ├── diagram/
 │           │   └── SKILL.md                  ← diagram generation skill
 │           └── excalidraw/
